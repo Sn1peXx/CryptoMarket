@@ -12,7 +12,7 @@ const PopularContainer = () => {
             .then(res => {
                 setCoins(res.data);
             })
-            .catch(e => console.error(e))
+            .catch(e => console.error(e));
     }, []);
 
     return (

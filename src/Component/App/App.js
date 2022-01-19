@@ -5,6 +5,7 @@ import PopularContainer from "../Popular/PopularContainer";
 import AllCryptoContainer from "../Popular/AllCryptoContainer";
 
 import './App.css';
+import CoinPage from "../CoinPage/CoinPage";
 
 
 
@@ -13,14 +14,15 @@ const App = () => {
       <>
           <Header />
            <div className="container">
-                <Switch>
-                    <Route exact path="/"
-                           render={() => <PopularContainer /> }
-                    />
-                    <Route exact path="/all"
-                        render={() => <AllCryptoContainer />}
-                    />
-                </Switch>
+                {/*<Switch>*/}
+                {/*    <Route exact path="/"*/}
+                {/*           render={() => <PopularContainer /> }*/}
+                {/*    />*/}
+                {/*    <Route exact path="/all"*/}
+                {/*        render={() => <AllCryptoContainer />}*/}
+                {/*    />*/}
+                {/*</Switch>*/}
+               <CoinPage />
            </div>
       </>
   );
