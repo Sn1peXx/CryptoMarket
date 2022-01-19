@@ -1,0 +1,51 @@
+.header {
+    height: 70px;
+    background-color: black;
+}
+
+.header_navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header_logo {
+    position: relative;
+    top: 4px;
+}
+
+.nav {
+    display: flex;
+}
+
+.nav_link {
+    color: white;
+    margin-left: 40px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav_link:hover {
+    transition: .3s;
+    color: rgb(168, 197, 255);
+}
+
+.nav_link:not(:hover) {
+    transition: .3s;
+}
+
+.header_login{
+    margin-left: 35px;
+    color: white;
+    padding: 10px 8px;
+    text-decoration: none;
+}
+
+.header_registration {
+    margin-left: 20px;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 8px;
+    text-decoration: none;
+    border-radius: 10px;
+}
