@@ -3,7 +3,7 @@ import {API} from "../../API/api";
 import CoinsList from "./CoinsList/CoinsList";
 import {NavLink} from "react-router-dom";
 
-const PopularContainer = () => {
+const PopularContainer = ({getCrypto}) => {
 
     const [coins, setCoins] = useState([]);
 
@@ -23,12 +23,14 @@ const PopularContainer = () => {
                     return (
                         <CoinsList
                             key={coin.id}
+                            id={coin.id}
                             name={coin.name}
                             price={coin.current_price}
                             symbol={coin.symbol}
                             volume={coin.market_cap}
                             image={coin.image}
                             priceChange={coin.price_change_percentage_24h}
+                            getCrypto={getCrypto}
                         />
                     )
                 })}

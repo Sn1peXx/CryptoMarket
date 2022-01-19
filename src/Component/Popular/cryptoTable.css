@@ -72,3 +72,8 @@
     color: #014CFF;
     padding-bottom: 50px;
 }
+
+.coin-link {
+    text-decoration: none;
+    color: black;
+}

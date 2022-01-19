@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import CoinsList from "./CoinsList/CoinsList";
 
 
-const AllCryptoContainer = () => {
+const AllPopularContainer = () => {
     const [coins, setCoins] = useState([]);
 
     useEffect(() => {
@@ -36,4 +36,4 @@ const AllCryptoContainer = () => {
     )
 }
 
-export default AllCryptoContainer;
+export default AllPopularContainer;

@@ -1,9 +1,11 @@
-import '../cryptoTable.css';
 import {NavLink} from "react-router-dom";
 
-const CoinsList = ({name, price, symbol, volume, image, priceChange}) => {
+import '../cryptoTable.css';
+
+
+const CoinsList = ({id, name, price, symbol, volume, image, priceChange, getCrypto}) => {
     return (
-        <div>
+        <NavLink className="coin-link" to={'/chart'} onClick={() => getCrypto(id)}>
             <div className='coin-container'>
                 <div className='coin-row'>
                     <div className='coin'>
@@ -21,11 +23,10 @@ const CoinsList = ({name, price, symbol, volume, image, priceChange}) => {
                                 <p className='coin-percent green'>{priceChange.toFixed(2)}%</p>
                             )}
                         </strong>
-
                     </div>
                 </div>
             </div>
-        </div>
+        </NavLink>
     )
 }
 
