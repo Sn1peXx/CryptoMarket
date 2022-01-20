@@ -3,18 +3,12 @@ import {useState} from "react";
 
 import Header from "../Header/Header";
 import PopularContainer from "../Popular/PopularContainer";
-import CoinPageContainer from "../CoinPage/CoinPageContainer";
+import CoinPageContainer from "../CoinChart/CoinChartContainer";
 
 import './App.css';
 
 
 const App = () => {
-
-    const [crypto, setCrypto] = useState('bitcoin');
-
-    const getCrypto = (id) => {
-        setCrypto(id);
-    }
 
     return (
         <>
@@ -22,10 +16,10 @@ const App = () => {
             <div className="container">
                 <Switch>
                     <Route exact path="/"
-                           render={() => <PopularContainer getCrypto={getCrypto} />}
+                           render={() => <PopularContainer />}
                     />
                     <Route exact path="/chart"
-                           render={() => <CoinPageContainer crypto={crypto} />}
+                           render={() => <CoinPageContainer />}
                     />
                 </Switch>
 

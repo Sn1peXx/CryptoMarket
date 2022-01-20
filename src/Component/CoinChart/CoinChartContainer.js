@@ -1,12 +1,13 @@
 import {API} from "../../API/api";
 import {useEffect, useState} from "react";
 
-import CoinPage from "./CoinPage";
+import CoinChart from "./CoinChart";
 import initChart from "../../services/initChart";
 import Preloader from "../../Common/Preloader/Preloader";
+import {connect} from "react-redux";
 
 
-const CoinPageContainer = ({crypto}) => {
+const CoinChartContainer = (props) => {
 
     const [latestPrice, setLatestPrice] = useState(0);
     const [coinsData, setCoinsData] = useState([]);
@@ -18,7 +19,7 @@ const CoinPageContainer = ({crypto}) => {
             setLatestPrice(parseFloat(chartData.price[chartData.price.length - 1]).toFixed(2));
         });
 
-        API.getExactCoin(crypto)
+        API.getExactCoin(props.selectCrypto)
             .then(res => {
                 setCoinsData(res.data);
                 setFetching(false);
@@ -29,7 +30,7 @@ const CoinPageContainer = ({crypto}) => {
 
     const fetchData = async () => {
         let data = { index: [], price: [], volumes: [] };
-        let result = await API.getChartCoin(crypto);
+        let result = await API.getChartCoin(props.selectCrypto);
         for (const item of result.prices) {
             data.index.push(item[0]);
             data.price.push(item[1]);
@@ -43,11 +44,15 @@ const CoinPageContainer = ({crypto}) => {
         <>
             {isFetching
                 ? <Preloader />
-                : <CoinPage latestPrice={latestPrice} coinsData={coinsData} />
+                : <CoinChart latestPrice={latestPrice} coinsData={coinsData} />
             }
         </>
     )
-
 }
 
-export default CoinPageContainer;
+const mapStateToProps = (state) => {
+    return {
+        selectCrypto: state.CoinListPage.selectCrypto
+    }
+}
+export default connect(mapStateToProps, null)(CoinChartContainer);

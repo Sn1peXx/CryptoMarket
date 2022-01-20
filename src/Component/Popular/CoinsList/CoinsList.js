@@ -1,14 +1,14 @@
 import {NavLink} from "react-router-dom";
 
-import '../cryptoTable.css';
+import '../CoinList.css';
 
 
-const CoinsList = ({id, name, price, symbol, volume, image, priceChange, getCrypto}) => {
+const CoinsList = ({id, name, price, symbol, volume, image, priceChange, setCurrentCrypto}) => {
     return (
             <div className="coin-link" >
                 <div className='coin-container'>
                     <i className="far fa-star"/>
-                    <NavLink className='coin-row' to={'/chart'} onClick={() => getCrypto(id)}>
+                    <NavLink className='coin-row' to={'/chart'} onClick={() => setCurrentCrypto(id)}>
                         <div className='coin'>
                             <img src={image} alt='crypto' width={25} />
                             <h1>{name}</h1>

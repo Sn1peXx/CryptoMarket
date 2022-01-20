@@ -1,39 +1,31 @@
 import {useEffect, useState} from "react";
-import {API} from "../../API/api";
 import Preloader from "../../Common/Preloader/Preloader";
 import CoinsList from "./CoinsList/CoinsList";
+import {connect} from "react-redux";
+import {getAllCoins, getTenCoins, setCurrentCrypto} from "../../Redux/CoinListReducer";
 
 
-const PopularContainer = ({getCrypto}) => {
+const PopularContainer = (props) => {
 
-    const [coins, setCoins] = useState([]);
-    const [isFetching, setFetching] = useState(true);
+    const [visible, setVisible] = useState(true);
 
     useEffect(() => {
-        API.getTenCoins()
-            .then(res => {
-                setCoins(res.data);
-                setFetching(false);
-            })
-            .catch(e => console.error(e));
+        props.getTenCoins()
     }, []);
 
     const showAllCryptoHandler = () => {
-        API.getAllCoins()
-            .then(res => {
-                setCoins(res.data);
-            })
-            .catch(e => console.error(e))
+        props.getAllCoins();
+        setVisible(false);
     }
 
     return (
         <>
-            {isFetching
+            {props.isFetching
                 ? <Preloader />
                 : <div className='coin-app'>
                     <div className='coin-search'>
                         <h3 className='coin-text'>Популярные</h3>
-                        {coins.map(coin => {
+                        {props.coins.map(coin => {
                             return (
                                 <CoinsList
                                     key={coin.id}
@@ -44,18 +36,27 @@ const PopularContainer = ({getCrypto}) => {
                                     volume={coin.market_cap}
                                     image={coin.image}
                                     priceChange={coin.price_change_percentage_24h}
-                                    getCrypto={getCrypto}
+                                    {...props}
                                 />
                             )
                         })}
                     </div>
-                    <button className="popular_link" onClick={() => showAllCryptoHandler()} >Посмотреть цены на другие криптовалюты</button>
+                    {
+                        visible &&  <button className="popular_link" onClick={() => showAllCryptoHandler()}>Посмотреть цены на другие криптовалюты </button>
+                    }
                 </div>
             }
         </>
-
     )
-
 }
 
-export default PopularContainer;
+const mapStateToProps = (state) => {
+    return {
+        selectCrypto: state.CoinListPage.selectCrypto,
+        coins: state.CoinListPage.coins,
+        isFetching: state.CoinListPage.isFetching
+    }
+}
+
+
+export default connect(mapStateToProps, {setCurrentCrypto, getAllCoins, getTenCoins})(PopularContainer);

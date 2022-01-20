@@ -1,6 +1,6 @@
 import './CoinPage.css';
 
-const CoinPage = ({latestPrice, coinsData}) => {
+const CoinChart = ({latestPrice, coinsData}) => {
 
     let changePerDay = coinsData.market_data.price_change_percentage_24h;
 
@@ -24,4 +24,4 @@ const CoinPage = ({latestPrice, coinsData}) => {
 
 }
 
-export default CoinPage;
+export default CoinChart;
