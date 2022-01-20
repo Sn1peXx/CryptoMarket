@@ -1,0 +1,13 @@
+.footer {
+    height: 70px;
+    background-color: black;
+    color: white;
+    /*margin-top: 100px;*/
+}
+
+.footer_copy {
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

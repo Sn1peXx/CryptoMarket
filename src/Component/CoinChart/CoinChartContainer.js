@@ -1,10 +1,12 @@
 import {API} from "../../API/api";
 import {useEffect, useState} from "react";
+import {connect} from "react-redux";
 
 import CoinChart from "./CoinChart";
 import initChart from "../../services/initChart";
 import Preloader from "../../Common/Preloader/Preloader";
-import {connect} from "react-redux";
+import Footer from "../Footer/Footer";
+
 
 
 const CoinChartContainer = (props) => {
@@ -44,7 +46,12 @@ const CoinChartContainer = (props) => {
         <>
             {isFetching
                 ? <Preloader />
-                : <CoinChart latestPrice={latestPrice} coinsData={coinsData} />
+                : <>
+                    <div className="container">
+                        <CoinChart latestPrice={latestPrice} coinsData={coinsData} />
+                    </div>
+                    <Footer />
+                </>
             }
         </>
     )
@@ -55,4 +62,5 @@ const mapStateToProps = (state) => {
         selectCrypto: state.CoinListPage.selectCrypto
     }
 }
+
 export default connect(mapStateToProps, null)(CoinChartContainer);

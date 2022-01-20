@@ -1,19 +1,38 @@
 import {Route, Switch} from "react-router-dom";
-import {useState} from "react";
+import {useEffect} from "react";
+import {connect} from "react-redux";
 
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import PopularContainer from "../Popular/PopularContainer";
 import CoinPageContainer from "../CoinChart/CoinChartContainer";
+import Preloader from "../../Common/Preloader/Preloader";
+import {initializeApp} from "../../Redux/AppReducer";
 
 import './App.css';
 
 
-const App = () => {
+
+const App = (props) => {
+
+    useEffect(() => {
+        props.initializeApp();
+    }, [props.initialized]);
+
+
+    if (!props.initialized) {
+        return (
+            <div className="container">
+                <div className="center">
+                    <Preloader />
+                </div>
+            </div>
+        )
+    }
 
     return (
         <>
             <Header/>
-            <div className="container">
                 <Switch>
                     <Route exact path="/"
                            render={() => <PopularContainer />}
@@ -23,9 +42,14 @@ const App = () => {
                     />
                 </Switch>
 
-            </div>
         </>
     );
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        initialized: state.AppPage.initialized
+    }
+}
+
+export default connect(mapStateToProps, {initializeApp})(App);
