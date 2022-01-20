@@ -1,0 +1,41 @@
+.crypto_info {
+    display: flex;
+    align-items: center;
+}
+
+.name_coin {
+    margin-left: 15px;
+    font-size: 34px;
+}
+
+.text_coin {
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    top: 6px;
+}
+
+.price_coin {
+    font-size: 25px;
+    position: relative;
+    top: 4px;
+}
+
+.day_change_coin {
+    margin-left: 65px;
+    display: flex;
+}
+
+.coin_per {
+    font-size: 22px;
+}
+
+.change_text {
+    position: relative;
+    top: 3px;
+    margin-right: 10px;
+}
+
+.coin_page {
+    margin-top: 50px;
+}

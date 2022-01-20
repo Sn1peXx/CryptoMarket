@@ -3,17 +3,29 @@ import {useEffect, useState} from "react";
 
 import CoinPage from "./CoinPage";
 import initChart from "../../services/initChart";
+import Preloader from "../../Common/Preloader/Preloader";
 
 
 const CoinPageContainer = ({crypto}) => {
+
     const [latestPrice, setLatestPrice] = useState(0);
+    const [coinsData, setCoinsData] = useState([]);
+    const [isFetching, setFetching] = useState(true);
 
     useEffect(() => {
         fetchData().then((chartData) => {
             initChart(chartData);
             setLatestPrice(parseFloat(chartData.price[chartData.price.length - 1]).toFixed(2));
         });
+
+        API.getExactCoin(crypto)
+            .then(res => {
+                setCoinsData(res.data);
+                setFetching(false);
+            })
+            .catch(e => console.error(e))
     }, []);
+
 
     const fetchData = async () => {
         let data = { index: [], price: [], volumes: [] };
@@ -28,7 +40,12 @@ const CoinPageContainer = ({crypto}) => {
 
 
     return (
-        <CoinPage latestPrice={latestPrice} />
+        <>
+            {isFetching
+                ? <Preloader />
+                : <CoinPage latestPrice={latestPrice} coinsData={coinsData} />
+            }
+        </>
     )
 
 }

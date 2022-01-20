@@ -13,7 +13,7 @@ const Header = () => {
                     </div>
                     <nav className="nav">
                         <NavLink exact to={'/'} className="nav_link">Популярное</NavLink>
-                        <div className="nav_link">Рынок</div>
+                        <NavLink exact to="/chart" className="nav_link">Рынок</NavLink>
                         <div className="nav_link">Купить криптовалюту</div>
                         <div className="nav_link">Поддержка</div>
                     </nav>
