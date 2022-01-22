@@ -1,0 +1,41 @@
+.form_error {
+    color: red;
+    font-size: 14px;
+    float: end;
+}
+
+.form_flex {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form_input {
+    width: 600px;
+    height: 50px;
+    padding-left: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: #eaeaea;
+}
+
+.form_button {
+    width: 600px;
+    height: 40px;
+    background-color: #6C99E3;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+    border-radius: 10px;
+}
+
+.form_enter {
+    position: relative;
+    top: -40px;
+}

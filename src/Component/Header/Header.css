@@ -34,6 +34,7 @@
     transition: .3s;
 }
 
+
 .header_login{
     margin-left: 35px;
     color: white;
@@ -46,6 +47,18 @@
     color: white;
     border: 1px solid white;
     padding: 10px 8px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.header_exit {
+    margin-left: 20px;
+    color: white;
+    font-size: 18px;
+    border: 1px solid #de3030;
+    background-color: #de3030;
+    padding: 10px 8px;
+    cursor: pointer;
     text-decoration: none;
     border-radius: 10px;
 }

@@ -5,8 +5,6 @@ import {connect} from "react-redux";
 import CoinChart from "./CoinChart";
 import initChart from "../../services/initChart";
 import Preloader from "../../Common/Preloader/Preloader";
-import Footer from "../Footer/Footer";
-
 
 
 const CoinChartContainer = (props) => {
@@ -47,11 +45,8 @@ const CoinChartContainer = (props) => {
             {isFetching
                 ? <Preloader />
                 : <>
-                    <div className="container">
-                        <CoinChart latestPrice={latestPrice} coinsData={coinsData} />
-                    </div>
-                    <Footer />
-                </>
+                    <CoinChart latestPrice={latestPrice} coinsData={coinsData} />
+                 </>
             }
         </>
     )

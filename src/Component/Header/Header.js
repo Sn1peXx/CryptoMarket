@@ -3,7 +3,9 @@ import logo from "../../resources/Logo_6(white).png";
 import './Header.css'
 import {NavLink} from "react-router-dom";
 
-const Header = () => {
+const Header = ({isAuth, removeUserData}) => {
+
+
     return (
         <header className="header">
             <div className="container">
@@ -17,10 +19,13 @@ const Header = () => {
                         <div className="nav_link">Купить криптовалюту</div>
                         <div className="nav_link">Поддержка</div>
                     </nav>
-                    <div className="header_button">
-                        <a href="#" className="header_login">Войти</a>
-                        <a href="#" className="header_registration">Создать аккаунт</a>
-                    </div>
+                    {isAuth
+                        ? <button className="header_exit" onClick={() => removeUserData()}>Выйти</button>
+                        : <div className="header_button">
+                            <NavLink to={'/login'} className="header_login">Войти</NavLink>
+                            <NavLink to={'/register'} className="header_registration">Создать аккаунт</NavLink>
+                          </div>
+                    }
                 </div>
             </div>
         </header>

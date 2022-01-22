@@ -1,4 +1,4 @@
-import preloader from "../../resources/Double Ring-2.6s-200px.svg";
+import preloader from "../../resources/Spin-0.9s-201px.svg";
 import React from "react";
 
 import '../../Component/App/App.css'

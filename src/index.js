@@ -7,6 +7,7 @@ import {Provider} from "react-redux";
 import * as serviceWorker from './serviceWorker';
 import App from './Component/App/App';
 import store from "./Redux/ReduxStore";
+import './firebase';
 
 import './index.css';
 
