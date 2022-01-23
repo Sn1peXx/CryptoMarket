@@ -39,3 +39,24 @@
 .coin_page {
     margin-top: 50px;
 }
+
+.button_group_time {
+    margin-bottom: 120px;
+}
+
+.button_chart {
+    background-color: #3c6df5;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.button_setting {
+    margin-left: 15px;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}

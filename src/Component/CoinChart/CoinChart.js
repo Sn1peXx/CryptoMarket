@@ -1,11 +1,26 @@
-import './CoinPage.css';
 import Footer from "../Footer/Footer";
 
-const CoinChart = ({latestPrice, coinsData}) => {
+import './CoinPage.css';
+
+
+const CoinChart = ({latestPrice, coinsData, setTimeframe}) => {
 
     let changePerDay = coinsData.market_data.price_change_percentage_24h;
 
-    setTimeout(() => 2000)
+    setTimeout(() => 2000);
+
+    const buttonsArr = [
+        {label: '1 День', data: 1},
+        {label: '1 Неделя', data: 7},
+        {label: '1 Месяц', data: 30},
+        {label: '1 Год', data: 365}
+    ]
+
+    const buttons = buttonsArr.map(({label, data}) => {
+        return (
+            <button type="button" className="button_chart" onClick={() => setTimeframe(data)}>{label}</button>
+        )
+    })
 
     return (
         <>
@@ -26,6 +41,10 @@ const CoinChart = ({latestPrice, coinsData}) => {
                     </div>
                     <div id='chart' className='p-0 m-0'/>
                 </div>
+                <h4 className="button_setting">Настройки ТФ</h4>
+               <div className="button_group_time">
+                   {buttons}
+               </div>
             </div>
             <Footer/>
         </>

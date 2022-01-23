@@ -12,6 +12,9 @@ const CoinChartContainer = (props) => {
     const [latestPrice, setLatestPrice] = useState(0);
     const [coinsData, setCoinsData] = useState([]);
     const [isFetching, setFetching] = useState(true);
+    const [timeframe, setTimeframe] = useState(365);
+
+    console.log(timeframe)
 
     useEffect(() => {
         fetchData().then((chartData) => {
@@ -25,12 +28,12 @@ const CoinChartContainer = (props) => {
                 setFetching(false);
             })
             .catch(e => console.error(e))
-    }, []);
+    }, [timeframe]);
 
 
     const fetchData = async () => {
         let data = { index: [], price: [], volumes: [] };
-        let result = await API.getChartCoin(props.selectCrypto);
+        let result = await API.getChartCoin(props.selectCrypto, timeframe);
         for (const item of result.prices) {
             data.index.push(item[0]);
             data.price.push(item[1]);
@@ -45,7 +48,7 @@ const CoinChartContainer = (props) => {
             {isFetching
                 ? <Preloader />
                 : <>
-                    <CoinChart latestPrice={latestPrice} coinsData={coinsData} />
+                    <CoinChart latestPrice={latestPrice} coinsData={coinsData} setTimeframe={setTimeframe} />
                  </>
             }
         </>
