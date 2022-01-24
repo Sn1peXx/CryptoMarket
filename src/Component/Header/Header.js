@@ -17,7 +17,7 @@ const Header = ({isAuth, removeUserData}) => {
                         <NavLink exact to={'/'} className="nav_link">Популярное</NavLink>
                         <NavLink exact to="/chart" className="nav_link">Рынок</NavLink>
                         <div className="nav_link">Купить криптовалюту</div>
-                        <div className="nav_link">Поддержка</div>
+                        <div className="nav_link">Кошелек</div>
                     </nav>
                     {isAuth
                         ? <button className="header_exit" onClick={() => removeUserData()}>Выйти</button>

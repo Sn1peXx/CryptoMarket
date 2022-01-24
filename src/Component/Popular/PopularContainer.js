@@ -2,7 +2,8 @@ import {useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {
     getAllCoins,
-    getTenCoins, removeFavoritesCoinsFromArray,
+    getTenCoins,
+    removeFavoritesCoinsFromArray,
     setCurrentCrypto,
     setFavoriteCoinsToArray
 } from "../../Redux/CoinListReducer";
@@ -22,7 +23,6 @@ const PopularContainer = (props) => {
     useEffect(() => {
         props.getTenCoins()
     }, []);
-
 
     // Подгрузка при скролле
     useEffect(() => {
@@ -44,15 +44,13 @@ const PopularContainer = (props) => {
                 .finally(() => setFetching(false))
 
         }
-    }, [fetching])
+    }, [fetching]);
 
     const scrollHandler = (e) => {
         if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 150) {
             setFetching(true)
         }
-    }
-
-
+    };
 
     const handleChange = e => {
         setSearch(e.target.value);
@@ -69,7 +67,7 @@ const PopularContainer = (props) => {
         } else {
             props.removeFavoritesCoinsFromArray(id)
         }
-    }
+    };
 
     return (
         <>
@@ -107,7 +105,7 @@ const PopularContainer = (props) => {
                 </>
             }
         </>
-    )
+    );
 }
 
 const mapStateToProps = (state) => {

@@ -5,6 +5,7 @@ import {connect} from "react-redux";
 import CoinChart from "./CoinChart";
 import initChart from "../../services/initChart";
 import Preloader from "../../Common/Preloader/Preloader";
+import {getTenCoins, setCurrentCrypto} from "../../Redux/CoinListReducer";
 
 
 const CoinChartContainer = (props) => {
@@ -13,22 +14,6 @@ const CoinChartContainer = (props) => {
     const [coinsData, setCoinsData] = useState([]);
     const [isFetching, setFetching] = useState(true);
     const [timeframe, setTimeframe] = useState(365);
-
-    console.log(timeframe)
-
-    useEffect(() => {
-        fetchData().then((chartData) => {
-            initChart(chartData);
-            setLatestPrice(parseFloat(chartData.price[chartData.price.length - 1]).toFixed(2));
-        });
-
-        API.getExactCoin(props.selectCrypto)
-            .then(res => {
-                setCoinsData(res.data);
-                setFetching(false);
-            })
-            .catch(e => console.error(e))
-    }, [timeframe]);
 
 
     const fetchData = async () => {
@@ -43,12 +28,39 @@ const CoinChartContainer = (props) => {
     };
 
 
+    useEffect(() => {
+        fetchData().then((chartData) => {
+            initChart(chartData);
+            setLatestPrice(parseFloat(chartData.price[chartData.price.length - 1]).toFixed(2));
+        });
+
+        API.getExactCoin(props.selectCrypto)
+            .then(res => {
+                setCoinsData(res.data);
+                setFetching(false);
+            })
+            .catch(e => console.error(e));
+
+    }, [timeframe]);
+
+    useEffect(() => {
+        props.getTenCoins();
+    }, []);
+
+
     return (
         <>
             {isFetching
                 ? <Preloader />
                 : <>
-                    <CoinChart latestPrice={latestPrice} coinsData={coinsData} setTimeframe={setTimeframe} />
+                    <CoinChart
+                        coins={props.coins}
+                        setCurrentCrypto={props.setCurrentCrypto}
+                        selectCrypto={props.selectCrypto}
+                        latestPrice={latestPrice}
+                        coinsData={coinsData}
+                        setTimeframe={setTimeframe}
+                    />
                  </>
             }
         </>
@@ -57,8 +69,9 @@ const CoinChartContainer = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        selectCrypto: state.CoinListPage.selectCrypto
+        selectCrypto: state.CoinListPage.selectCrypto,
+        coins: state.CoinListPage.coins,
     }
 }
 
-export default connect(mapStateToProps, null)(CoinChartContainer);
+export default connect(mapStateToProps, {getTenCoins, setCurrentCrypto})(CoinChartContainer);

@@ -5,8 +5,6 @@ import '../CoinList.css';
 
 const CoinsList = ({id, name, price, symbol, volume, image, priceChange, setCurrentCrypto, onToggleLike, favoriteCoins}) => {
 
-
-
     return (
         <div className="coin-link">
             <div  className={favoriteCoins.indexOf(id) === -1 ? 'coin-container' : 'coin-container favorite'}>

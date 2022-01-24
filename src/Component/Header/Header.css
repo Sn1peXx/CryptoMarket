@@ -26,12 +26,7 @@
 }
 
 .nav_link:hover {
-    transition: .3s;
-    color: rgb(168, 197, 255);
-}
-
-.nav_link:not(:hover) {
-    transition: .3s;
+    text-decoration: underline;
 }
 
 
@@ -57,7 +52,7 @@
     font-size: 18px;
     border: 1px solid #de3030;
     background-color: #de3030;
-    padding: 10px 8px;
+    padding: 10px 17px;
     cursor: pointer;
     text-decoration: none;
     border-radius: 10px;

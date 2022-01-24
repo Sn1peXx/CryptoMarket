@@ -42,16 +42,8 @@
 
 .button_group_time {
     margin-bottom: 120px;
-}
-
-.button_chart {
-    background-color: #3c6df5;
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 15px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .button_setting {
@@ -59,4 +51,75 @@
     font-size: 30px;
     font-weight: 400;
     margin-bottom: 20px;
+}
+
+.btn {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid #3c6df5;
+    border-radius: 0.6em;
+    color: #3c6df5;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: center;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 10px;
+    padding: 10px 25px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+.btn:hover {
+    color: #fff;
+    outline: 0;
+}
+
+.btn:focus {
+    background-color: #3c6df5;
+    color: white;
+}
+
+.first {
+    transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.first:hover {
+    box-shadow: 0 0 40px 40px #3c6df5 inset;
+}
+
+.coin_group {
+    display: flex;
+}
+
+.coin_cr {
+    width: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-bottom: 1px solid #d7d7d7;
+    text-decoration: none;
+    color: #000;
+}
+
+.coin_cr:hover {
+    transition: .3s;
+    background-color: rgba(232, 232, 232, 0.73);
+}
+
+.coin_left {
+    width: 48%;
+}
+
+.coin_right {
+    width: 50%;
 }

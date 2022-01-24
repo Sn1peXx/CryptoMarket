@@ -1,26 +1,31 @@
 import Footer from "../Footer/Footer";
 
 import './CoinPage.css';
+import CoinRec from "./CoinRecomended/CoinRec";
 
 
-const CoinChart = ({latestPrice, coinsData, setTimeframe}) => {
+const CoinChart = ({latestPrice, coinsData, setTimeframe, coins, setCurrentCrypto}) => {
 
     let changePerDay = coinsData.market_data.price_change_percentage_24h;
 
-    setTimeout(() => 2000);
-
     const buttonsArr = [
         {label: '1 День', data: 1},
+        {label: '3 Дня', data: 3},
         {label: '1 Неделя', data: 7},
         {label: '1 Месяц', data: 30},
         {label: '1 Год', data: 365}
-    ]
+    ];
 
     const buttons = buttonsArr.map(({label, data}) => {
         return (
-            <button type="button" className="button_chart" onClick={() => setTimeframe(data)}>{label}</button>
+            <button type="button" className="button_chart btn first" key={data}
+                    onClick={() => setTimeframe(data)}>{label}</button>
         )
-    })
+    });
+
+    const timeHandler = (time) => {
+        setTimeframe(time)
+    }
 
     return (
         <>
@@ -41,16 +46,37 @@ const CoinChart = ({latestPrice, coinsData, setTimeframe}) => {
                     </div>
                     <div id='chart' className='p-0 m-0'/>
                 </div>
-                <h4 className="button_setting">Настройки ТФ</h4>
-               <div className="button_group_time">
-                   {buttons}
-               </div>
+                <div className="coin_group">
+                    <div className="coin_left">
+                        <h4 className="button_setting">Настройки ТФ</h4>
+                        <div className="button_group_time">
+                            {buttons}
+                        </div>
+                    </div>
+                    <div className="coin_right">
+                        <h4 className="button_setting">Часто просматриваемые</h4>
+                        {coins.map(coin => {
+                            return (
+                                <CoinRec
+                                    key={coin.id}
+                                    id={coin.id}
+                                    name={coin.name}
+                                    price={coin.current_price}
+                                    symbol={coin.symbol}
+                                    volume={coin.market_cap}
+                                    image={coin.image}
+                                    priceChange={coin.price_change_percentage_24h}
+                                    setCurrentCrypto={setCurrentCrypto}
+                                    timeHandler={timeHandler}
+                                />
+                            )
+                        })}
+                    </div>
+                </div>
             </div>
             <Footer/>
         </>
-
-
-    )
+    );
 }
 
 export default CoinChart;
