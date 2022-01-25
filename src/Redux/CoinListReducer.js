@@ -60,10 +60,10 @@ export const getAllCoins = (page) => async dispatch => {
 
 }
 
-export const getTenCoins = () => async dispatch => {
+export const getTenCoins = (day) => async dispatch => {
     dispatch(setIsFetching(true));
 
-    let data = await API.getTenCoins();
+    let data = await API.getSomeCoins(day);
 
     dispatch(setCoins(data.data));
     dispatch(setIsFetching(false));

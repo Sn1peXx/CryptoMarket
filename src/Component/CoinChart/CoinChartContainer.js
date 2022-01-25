@@ -15,7 +15,6 @@ const CoinChartContainer = (props) => {
     const [isFetching, setFetching] = useState(true);
     const [timeframe, setTimeframe] = useState(365);
 
-
     const fetchData = async () => {
         let data = { index: [], price: [], volumes: [] };
         let result = await API.getChartCoin(props.selectCrypto, timeframe);
@@ -24,9 +23,9 @@ const CoinChartContainer = (props) => {
             data.price.push(item[1]);
         }
         for (const item of result.total_volumes) data.volumes.push(item[1]);
+
         return data;
     };
-
 
     useEffect(() => {
         fetchData().then((chartData) => {

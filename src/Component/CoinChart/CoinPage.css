@@ -41,7 +41,7 @@
 }
 
 .button_group_time {
-    margin-bottom: 120px;
+    margin-bottom: 50px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -59,9 +59,9 @@
     -moz-appearance: none;
     appearance: none;
     background-color: transparent;
-    border: 1px solid #3c6df5;
+    border: 1px solid #151d2b;
     border-radius: 0.6em;
-    color: #3c6df5;
+    color: black;
     cursor: pointer;
     display: -webkit-box;
     display: -webkit-flex;
@@ -72,20 +72,21 @@
     font-size: 1rem;
     font-weight: 400;
     line-height: 1;
-    margin: 10px;
-    padding: 10px 25px;
+    margin: 13px;
+    padding: 10px 10px;
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
 }
 .btn:hover {
-    color: #fff;
+    color: white;
+    background-color: #151d2b;
     outline: 0;
 }
 
 .btn:focus {
-    background-color: #3c6df5;
+    background-color: #151d2b;
     color: white;
 }
 
@@ -93,11 +94,12 @@
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
 .first:hover {
-    box-shadow: 0 0 40px 40px #3c6df5 inset;
+    box-shadow: 0 0 40px 40px #151d2b inset;
 }
 
 .coin_group {
     display: flex;
+    margin-bottom: 150px;
 }
 
 .coin_cr {
@@ -111,6 +113,10 @@
     color: #000;
 }
 
+.coin-row {
+    padding-left: 10px;
+}
+
 .coin_cr:hover {
     transition: .3s;
     background-color: rgba(232, 232, 232, 0.73);
@@ -122,4 +128,176 @@
 
 .coin_right {
     width: 50%;
+}
+
+.btn_order {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #e74c3c;
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-self: center;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    padding: 1.2em 2.8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    margin-left: 15px;
+}
+
+.btn_order:hover, .btn_order:focus {
+    outline: 0;
+}
+
+.btn_order:first-child {
+    margin-right: 15px;
+}
+
+
+.buy_btn {
+    border-color: #5589f1;
+    color: #5589f1;
+    background-image: -webkit-linear-gradient(45deg, #5589f1 50%, transparent 50%);
+    background-image: linear-gradient(45deg, #5589f1 50%, transparent 50%);
+    background-position: 100%;
+    background-size: 400%;
+    -webkit-transition: background 300ms linear;
+    transition: background 300ms linear;
+}
+.buy_btn:hover {
+    color: white;
+    background-position: 0;
+}
+
+.buy_btn:focus {
+    color: white;
+    background-color: #5589f1;
+}
+
+.sell_btn {
+    border-color: #151d2b;
+    color: #151d2b;
+    background-image: -webkit-linear-gradient(45deg, #151d2b 50%, transparent 50%);
+    background-image: linear-gradient(45deg, #151d2b 50%, transparent 50%);
+    background-position: 100%;
+    background-size: 400%;
+    -webkit-transition: background 300ms linear;
+    transition: background 300ms linear;
+}
+.sell_btn:hover {
+    color: white;
+    background-position: 0;
+}
+
+.sell_btn:focus {
+    color: white;
+    background-color: #151d2b;
+}
+
+.btn_order_group {
+    display: flex;
+}
+
+.order {
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.order_available {
+    margin-bottom: 20px;
+}
+
+.order_cost {
+    display: flex;
+    background-color: #d7d7d7;
+    width: 350px;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-radius: 5px;
+}
+
+.order_input {
+    margin-top: 20px;
+    background-color: #eeebeb;
+    width: 350px;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.order_range {
+    width: 350px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+input[type='range'] {
+    overflow: hidden;
+    width: 350px;
+    -webkit-appearance: none;
+    background-color: #eeebeb;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: #ffffff;
+    margin-top: -1px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    width: 10px;
+    height: 20px;
+    -webkit-appearance: none;
+    background: #ffffff;
+    box-shadow: -200px 0 0 190px #151d2b;
+}
+
+.button_trans_buy {
+    width: 350px;
+    margin-top: 30px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    background-color: #0ECB7F;
+    color: white;
+}
+
+.button_trans_sell {
+    width: 350px;
+    margin-top: 30px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    background-color: #DE302F;
+    color: white;
+}
+
+.order_dollar {
+    position: relative;
+    left: -30px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }

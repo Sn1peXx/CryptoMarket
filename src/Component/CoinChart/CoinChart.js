@@ -2,9 +2,12 @@ import Footer from "../Footer/Footer";
 
 import './CoinPage.css';
 import CoinRec from "./CoinRecomended/CoinRec";
+import CoinTrade from "./CoinTrade/CoinTrade";
 
 
 const CoinChart = ({latestPrice, coinsData, setTimeframe, coins, setCurrentCrypto}) => {
+
+    const offerCoins = coins.slice(5, 14);
 
     let changePerDay = coinsData.market_data.price_change_percentage_24h;
 
@@ -13,6 +16,7 @@ const CoinChart = ({latestPrice, coinsData, setTimeframe, coins, setCurrentCrypt
         {label: '3 Дня', data: 3},
         {label: '1 Неделя', data: 7},
         {label: '1 Месяц', data: 30},
+        {label: '6 Месяцев', data: 182},
         {label: '1 Год', data: 365}
     ];
 
@@ -52,10 +56,12 @@ const CoinChart = ({latestPrice, coinsData, setTimeframe, coins, setCurrentCrypt
                         <div className="button_group_time">
                             {buttons}
                         </div>
+                        <CoinTrade coinsData={coinsData} latestPrice={latestPrice} />
                     </div>
+
                     <div className="coin_right">
                         <h4 className="button_setting">Часто просматриваемые</h4>
-                        {coins.map(coin => {
+                        {offerCoins.map(coin => {
                             return (
                                 <CoinRec
                                     key={coin.id}
@@ -66,6 +72,7 @@ const CoinChart = ({latestPrice, coinsData, setTimeframe, coins, setCurrentCrypt
                                     volume={coin.market_cap}
                                     image={coin.image}
                                     priceChange={coin.price_change_percentage_24h}
+                                    coin={coin}
                                     setCurrentCrypto={setCurrentCrypto}
                                     timeHandler={timeHandler}
                                 />

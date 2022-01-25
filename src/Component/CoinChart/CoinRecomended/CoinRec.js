@@ -6,8 +6,9 @@ const CoinRec = ({id, name, price, symbol, image, priceChange, setCurrentCrypto,
         <div className="coin-link">
             <div  className='coin_cr'>
                 <NavLink className='coin-row coin_cr' to={'/chart'} onClick={() => {
-                    timeHandler(Math.floor(Math.random() * 4) + 1)
+                    timeHandler(Math.floor(Math.random() * (365 - 355)) + 355)
                     setCurrentCrypto(id);
+                    window.scrollTo(0, 0);
                 }}>
                     <div className='coin'>
                         <img src={image} alt='crypto' width={25} />

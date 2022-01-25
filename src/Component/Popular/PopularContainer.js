@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {connect} from "react-redux";
 import {
     getAllCoins,
@@ -20,17 +20,16 @@ const PopularContainer = (props) => {
     const [fetching, setFetching] = useState(false);
 
 
-    useEffect(() => {
-        props.getTenCoins()
-    }, []);
-
     // Подгрузка при скролле
     useEffect(() => {
+        props.getTenCoins()
+
         document.addEventListener('scroll', scrollHandler);
         return function () {
             document.removeEventListener('scroll', scrollHandler);
         }
     }, []);
+
 
     useEffect(() => {
         if (fetching) {
@@ -42,7 +41,6 @@ const PopularContainer = (props) => {
                     }
                 })
                 .finally(() => setFetching(false))
-
         }
     }, [fetching]);
 
