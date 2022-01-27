@@ -6,6 +6,7 @@ import CoinChart from "./CoinChart";
 import initChart from "../../services/initChart";
 import Preloader from "../../Common/Preloader/Preloader";
 import {getTenCoins, setCurrentCrypto} from "../../Redux/CoinListReducer";
+import {addNewDeal, addOrder, changeMyBalance, setNewArrOrder} from "../../Redux/TradeReducer";
 
 
 const CoinChartContainer = (props) => {
@@ -54,11 +55,17 @@ const CoinChartContainer = (props) => {
                 : <>
                     <CoinChart
                         coins={props.coins}
+                        balance={props.balance}
                         setCurrentCrypto={props.setCurrentCrypto}
                         selectCrypto={props.selectCrypto}
                         latestPrice={latestPrice}
                         coinsData={coinsData}
                         setTimeframe={setTimeframe}
+                        addOrder={props.addOrder}
+                        changeMyBalance={props.changeMyBalance}
+                        addNewDeal={props.addNewDeal}
+                        activeDeal={props.activeDeal}
+                        setNewArrOrder={props.setNewArrOrder}
                     />
                  </>
             }
@@ -70,7 +77,9 @@ const mapStateToProps = (state) => {
     return {
         selectCrypto: state.CoinListPage.selectCrypto,
         coins: state.CoinListPage.coins,
+        balance: state.TradePage.balance,
+        activeDeal: state.TradePage.activeDeal
     }
 }
 
-export default connect(mapStateToProps, {getTenCoins, setCurrentCrypto})(CoinChartContainer);
+export default connect(mapStateToProps, {getTenCoins, setCurrentCrypto, addOrder, addNewDeal, setNewArrOrder, changeMyBalance})(CoinChartContainer);

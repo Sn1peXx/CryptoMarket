@@ -164,7 +164,6 @@
     margin-right: 15px;
 }
 
-
 .buy_btn {
     border-color: #5589f1;
     color: #5589f1;
@@ -211,7 +210,7 @@
 
 .order {
     margin-left: 20px;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .order_available {
@@ -245,26 +244,33 @@
 }
 
 input[type='range'] {
-    overflow: hidden;
-    width: 350px;
+    height: 39px;
     -webkit-appearance: none;
-    background-color: #eeebeb;
+    margin: 10px 0;
+    width: 350px;
 }
 
 input[type='range']::-webkit-slider-runnable-track {
-    height: 10px;
+    width: 100%;
+    height: 12px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: #000000;
+    border-radius: 4px;
+    border: 2px solid #F2F2F2;
+}
+input[type='range']::-webkit-slider-thumb {
+    box-shadow: 1px 1px 2px #A6A6A6;
+    border: 2px solid #000000;
+    height: 25px;
+    width: 25px;
+    border-radius: 6px;
+    background: #FFFFFF;
+    cursor: pointer;
     -webkit-appearance: none;
-    color: #ffffff;
-    margin-top: -1px;
+    margin-top: -8px;
 }
 
-input[type='range']::-webkit-slider-thumb {
-    width: 10px;
-    height: 20px;
-    -webkit-appearance: none;
-    background: #ffffff;
-    box-shadow: -200px 0 0 190px #151d2b;
-}
 
 .button_trans_buy {
     width: 350px;

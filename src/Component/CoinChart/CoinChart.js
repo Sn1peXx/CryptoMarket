@@ -3,9 +3,10 @@ import Footer from "../Footer/Footer";
 import './CoinPage.css';
 import CoinRec from "./CoinRecomended/CoinRec";
 import CoinTrade from "./CoinTrade/CoinTrade";
+import {setNewArrOrder} from "../../Redux/TradeReducer";
 
 
-const CoinChart = ({latestPrice, coinsData, setTimeframe, coins, setCurrentCrypto}) => {
+const CoinChart = ({latestPrice, coinsData, setTimeframe, coins, setCurrentCrypto, addOrder, addNewDeal, balance, changeMyBalance, activeDeal, setNewArrOrder}) => {
 
     const offerCoins = coins.slice(5, 14);
 
@@ -56,7 +57,7 @@ const CoinChart = ({latestPrice, coinsData, setTimeframe, coins, setCurrentCrypt
                         <div className="button_group_time">
                             {buttons}
                         </div>
-                        <CoinTrade coinsData={coinsData} latestPrice={latestPrice} />
+                        <CoinTrade coinsData={coinsData} activeDeal={activeDeal} setNewArrOrder={setNewArrOrder} addNewDeal={addNewDeal} changeMyBalance={changeMyBalance} latestPrice={latestPrice} balance={balance} addOrder={addOrder} />
                     </div>
 
                     <div className="coin_right">
