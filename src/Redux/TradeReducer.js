@@ -7,7 +7,7 @@ const REMOVE_ITEM_FROM_DEAL = 'trade/REMOVE_ITEM_FROM_DEAL';
 const initialState = {
     orders: [], // Все сделки для просмотра
     activeDeal: [], // Открыте сделки для расчета прибыли/убытков
-    balance: 500000
+    balance: 500
 }
 
 let id = 1;

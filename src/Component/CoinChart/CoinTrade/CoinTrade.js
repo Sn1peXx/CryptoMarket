@@ -40,14 +40,11 @@ const CoinTrade = ({latestPrice, coinsData, addOrder, balance, changeMyBalance, 
                 return item;
             }
 
-            console.log(item.dealVolume)
-            newBalance += item.dealVolume * latestPrice
+            newBalance += balance + (item.dealVolume * latestPrice)
 
         });
 
         changeMyBalance(newBalance);
-
-        console.log(newArr)
         setNewArrOrder(newArr)
     }
 
