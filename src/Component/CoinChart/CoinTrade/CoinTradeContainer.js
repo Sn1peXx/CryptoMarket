@@ -2,6 +2,7 @@ import {connect} from "react-redux";
 import {addNewDeal, addOrder, changeMyBalance, setNewArrOrder} from "../../../Redux/TradeReducer";
 import CoinTrade from "./CoinTrade";
 
+
 const CoinTradeContainer = (props) => {
     return (
         <CoinTrade

@@ -4,8 +4,20 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Form from "./Form/Form";
 import {useHistory} from "react-router-dom";
 import handleGoogleLogin from "../../Common/Helper/loginWithGoogle";
+import {getDatabase, ref, set} from "firebase/database";
 
 const SignUp = (props) => {
+
+    const addBalance = () => {
+        const db = getDatabase();
+        const userId = JSON.parse(localStorage.getItem("user"))[2];
+
+        const {balance} = props
+
+        set(ref(db, 'Balance/' + userId), {
+            balance
+        });
+    }
 
     const {push} = useHistory();
 
@@ -15,6 +27,7 @@ const SignUp = (props) => {
             .then(({user}) => {
                 console.log(user);
                 props.setUserData(user.email, user.accessToken, user.uid);
+                addBalance();
                 push('/');
             })
             .catch(console.error)
@@ -26,7 +39,9 @@ const SignUp = (props) => {
 }
 
 const mapStateToProps = state => {
-    return {}
+    return {
+        balance: state.TradePage.balance
+    }
 }
 
 export default connect(mapStateToProps, {setUserData})(SignUp);

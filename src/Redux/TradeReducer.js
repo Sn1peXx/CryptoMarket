@@ -1,8 +1,10 @@
+
 const ADD_ORDER = 'trade/ADD_ORDER';
 const MAKE_A_DEAL = 'trade/MAKE_A_DEAL';
 const CHANGE_ACTIVE_DEAL = 'trade/CHANGE_ACTIVE_DEAL';
 const CHANGE_BALANCE = 'trade/CHANGE_BALANCE';
 const REMOVE_ITEM_FROM_DEAL = 'trade/REMOVE_ITEM_FROM_DEAL';
+
 
 const initialState = {
     orders: [], // Все сделки для просмотра

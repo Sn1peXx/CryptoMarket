@@ -12,6 +12,7 @@ import HeaderContainer from "../Header/HeaderContainer";
 
 
 import './App.css';
+import {getDatabase, onValue, ref, set} from "firebase/database";
 
 
 const App = (props) => {
@@ -25,6 +26,32 @@ const App = (props) => {
     useEffect(() => {
         props.initializeApp();
     }, [props.initialized]);
+
+
+    // Чтение из базы данных
+        useEffect(() => {
+            const db = getDatabase();
+            const userId = JSON.parse(localStorage.getItem("user"))[2];
+
+            const starCountRef = ref(db, 'OrderHistory/' + userId);
+            onValue(starCountRef, (snapshot) => {
+                try {
+                    let res = Object.values(snapshot.val())
+                    window.order = res;
+                } catch (e) {}
+            });
+
+            const starCountRef2 = ref(db, 'Balance/' + userId);
+            onValue(starCountRef2, (snapshot) => {
+                try {
+                    let res = Object.values(snapshot.val())
+                    console.log(res[0])
+                    window.balance = res[0];
+                } catch (e) {}
+
+            });
+        }, [])
+
 
 
     if (!props.initialized) {
@@ -61,7 +88,7 @@ const App = (props) => {
 
 const mapStateToProps = state => {
     return {
-        initialized: state.AppPage.initialized
+        initialized: state.AppPage.initialized,
     }
 }
 
