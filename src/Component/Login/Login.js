@@ -1,8 +1,9 @@
 import {connect} from "react-redux";
 import {setUserData} from "../../Redux/LoginReducer";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword} from "firebase/auth";
 import Form from "./Form/Form";
 import {useHistory} from "react-router-dom";
+import handleGoogleLogin from "../../Common/Helper/loginWithGoogle";
 
 const Login = (props) => {
 
@@ -18,13 +19,11 @@ const Login = (props) => {
             .catch(console.error)
     }
 
+
     return (
-        <Form title={"Войти"} handleClick={handleLogin} />
+        <Form title={"Войти"} handleClick={handleLogin} handleGoogleLogin={() => handleGoogleLogin(props.setUserData, push)} />
     )
 }
 
-const mapStateToProps = state => {
-    return {}
-}
 
-export default connect(mapStateToProps, {setUserData})(Login);
+export default connect(null, {setUserData})(Login);

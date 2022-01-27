@@ -3,6 +3,7 @@ import {setUserData} from "../../Redux/LoginReducer";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Form from "./Form/Form";
 import {useHistory} from "react-router-dom";
+import handleGoogleLogin from "../../Common/Helper/loginWithGoogle";
 
 const SignUp = (props) => {
 
@@ -20,7 +21,7 @@ const SignUp = (props) => {
     }
 
     return (
-        <Form title={"Регистрация"} handleClick={handleLogin} />
+        <Form title={"Регистрация"} handleClick={handleLogin} handleGoogleLogin={() => handleGoogleLogin(props.setUserData, push)} />
     )
 }
 

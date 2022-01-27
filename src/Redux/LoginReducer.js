@@ -3,9 +3,13 @@ const REMOVE_USER = 'login/REMOVE_USER';
 
 
 let initialState = {
-    email: JSON.parse(localStorage.getItem("user"))[0] ? JSON.parse(localStorage.getItem("user"))[0] : null,
-    token: JSON.parse(localStorage.getItem("user"))[1] ? JSON.parse(localStorage.getItem("user"))[1] : null,
-    id: JSON.parse(localStorage.getItem("user"))[2] ? JSON.parse(localStorage.getItem("user"))[2] : null,
+    // email: '' || JSON.parse(localStorage.getItem("user"))[0],
+    // token: '' || JSON.parse(localStorage.getItem("user"))[1] ,
+    // id: '' || JSON.parse(localStorage.getItem("user"))[2],
+
+    email: '',
+    token: '',
+    id: '',
     isAuth: false
 }
 
