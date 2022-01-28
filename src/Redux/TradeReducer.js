@@ -3,6 +3,7 @@ const ADD_ORDER = 'trade/ADD_ORDER';
 const MAKE_A_DEAL = 'trade/MAKE_A_DEAL';
 const CHANGE_ACTIVE_DEAL = 'trade/CHANGE_ACTIVE_DEAL';
 const REMOVE_ITEM_FROM_DEAL = 'trade/REMOVE_ITEM_FROM_DEAL';
+const SET_ORDER = 'trade/SET_ORDER'
 
 
 const initialState = {
@@ -28,6 +29,9 @@ const TradeReducer = (state = initialState, action) => {
             state.orders.push(newOrder);
 
             return state;
+
+        case SET_ORDER:
+            return {...state, orders: action.orders}
 
         case MAKE_A_DEAL:
             const newDeal = {
@@ -60,6 +64,7 @@ export const addOrder = (coin, dealPrice, dealVolume, dealDate) => {
 }
 export const addNewDeal = (coin, dealVolume) => ({type: MAKE_A_DEAL, coin, dealVolume});
 export const setNewArrOrder = (newArr) => ({type: REMOVE_ITEM_FROM_DEAL, newArr});
+export const setOrder = (orders) => ({type:SET_ORDER, orders});
 
 
 

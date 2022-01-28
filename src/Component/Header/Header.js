@@ -5,7 +5,6 @@ import {NavLink} from "react-router-dom";
 
 const Header = ({isAuth, removeUserData}) => {
 
-
     return (
         <header className="header">
             <div className="container">
@@ -16,7 +15,7 @@ const Header = ({isAuth, removeUserData}) => {
                     <nav className="nav">
                         <NavLink exact to={'/'} className="nav_link">Популярное</NavLink>
                         <NavLink exact to="/chart" className="nav_link">Рынок</NavLink>
-                        <div className="nav_link">История ордеров</div>
+                        <NavLink exact to="/orders" className="nav_link">История ордеров</NavLink>
                         <div className="nav_link">Кошелек</div>
                     </nav>
                     {isAuth

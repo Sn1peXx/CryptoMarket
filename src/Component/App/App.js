@@ -2,6 +2,7 @@ import {Route, Switch} from "react-router-dom";
 import {useEffect} from "react";
 import {connect} from "react-redux";
 import {initializeApp} from "../../Redux/AppReducer";
+import {DataBase} from "../../API/DataBase";
 
 import PopularContainer from "../Popular/PopularContainer";
 import CoinPageContainer from "../CoinChart/CoinChartContainer";
@@ -9,9 +10,10 @@ import Preloader from "../../Common/Preloader/Preloader";
 import Login from "../Login/Login";
 import SignUp from "../Login/SignUp";
 import HeaderContainer from "../Header/HeaderContainer";
-import {DataBase} from "../../API/DataBase";
+import OrdersContainer from "../Orders/OrdersContainer";
 
 import './App.css';
+import {setOrder} from "../../Redux/TradeReducer";
 
 
 const App = (props) => {
@@ -32,6 +34,7 @@ const App = (props) => {
       DataBase.getBalance();
       DataBase.getNewDeal();
   }, []);
+
 
 
     if (!props.initialized) {
@@ -59,6 +62,9 @@ const App = (props) => {
                     />
                     <Route exact path="/register"
                            render={() => <SignUp />}
+                    />
+                    <Route exact path="/orders"
+                           render={() => <OrdersContainer />}
                     />
                 </Switch>
 

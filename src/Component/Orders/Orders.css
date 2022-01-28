@@ -1,0 +1,43 @@
+table {
+    font-size: 14px;
+    background: white;
+    max-width: 70%;
+    width: 70%;
+    border-collapse: collapse;
+    text-align: left;
+}
+th {
+    font-weight: normal;
+    color: black;
+    font-size: 18px;
+    border-bottom: 2px solid #1f1f2a;
+    padding: 10px 8px;
+}
+td {
+    cursor: pointer;
+    font-size: 17px;
+    color: #669;
+    padding: 16px 12px;
+    transition: .3s linear;
+}
+
+
+tr:hover td {
+    color: #6699ff;
+}
+
+.table_order {
+    display: flex;
+    justify-content: center;
+}
+
+.order_btn {
+    position: relative;
+    top: 50px;
+    margin: 0 auto;
+    padding: 10px 15px;
+    display: flex;
+    cursor: pointer;
+    background-color: inherit;
+    font-size: 18px;
+}

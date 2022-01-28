@@ -22,6 +22,10 @@ const CoinTradeContainer = (props) => {
 
     // Покупка
     const buyCurrentCoin = (coin, orderValue) => {
+        if (orderValue === 0) {
+            return 0;
+        }
+
         const dealDate = new Date().toLocaleDateString();
 
         const dealVolume = orderValue / props.latestPrice;
@@ -29,7 +33,7 @@ const CoinTradeContainer = (props) => {
 
         const id = (Math.random() * (10000000 - 1) + 1).toFixed(0);
 
-        // changeMyBalance(newBalance);
+
         addNewDeal(coin, dealVolume);
         addOrder(coin, orderValue, dealVolume, dealDate);
 
