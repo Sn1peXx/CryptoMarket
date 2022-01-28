@@ -16,7 +16,7 @@ const Header = ({isAuth, removeUserData}) => {
                     <nav className="nav">
                         <NavLink exact to={'/'} className="nav_link">Популярное</NavLink>
                         <NavLink exact to="/chart" className="nav_link">Рынок</NavLink>
-                        <div className="nav_link">Купить криптовалюту</div>
+                        <div className="nav_link">История ордеров</div>
                         <div className="nav_link">Кошелек</div>
                     </nav>
                     {isAuth

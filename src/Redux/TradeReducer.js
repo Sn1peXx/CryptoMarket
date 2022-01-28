@@ -2,14 +2,12 @@
 const ADD_ORDER = 'trade/ADD_ORDER';
 const MAKE_A_DEAL = 'trade/MAKE_A_DEAL';
 const CHANGE_ACTIVE_DEAL = 'trade/CHANGE_ACTIVE_DEAL';
-const CHANGE_BALANCE = 'trade/CHANGE_BALANCE';
 const REMOVE_ITEM_FROM_DEAL = 'trade/REMOVE_ITEM_FROM_DEAL';
 
 
 const initialState = {
     orders: [], // Все сделки для просмотра
     activeDeal: [], // Открыте сделки для расчета прибыли/убытков
-    balance: 500
 }
 
 let id = 1;
@@ -48,9 +46,6 @@ const TradeReducer = (state = initialState, action) => {
         case CHANGE_ACTIVE_DEAL:
             return {...state, activeDeal: action.activeDeal}
 
-        case CHANGE_BALANCE:
-            return {...state, balance: action.balance}
-
         default:
             return state
     }
@@ -63,11 +58,7 @@ export const addOrder = (coin, dealPrice, dealVolume, dealDate) => {
         coin, dealPrice, dealVolume, dealDate
     }
 }
-
 export const addNewDeal = (coin, dealVolume) => ({type: MAKE_A_DEAL, coin, dealVolume});
-
-export const changeMyBalance = (balance) => ({type: CHANGE_BALANCE, balance});
-
 export const setNewArrOrder = (newArr) => ({type: REMOVE_ITEM_FROM_DEAL, newArr});
 
 

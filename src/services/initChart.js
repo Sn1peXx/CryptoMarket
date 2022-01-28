@@ -1,6 +1,6 @@
 import Plotly from 'plotly.js-dist-min'
 
-const initChart = async (data) => {
+const initChart = (data) => {
     let trace_price = {
         name: "Price ($)",
         x: data.index.map((t) => new Date(t)),
@@ -59,7 +59,7 @@ const initChart = async (data) => {
 
     let config = { responsive: false, displayModeBar: false };
     let series = [trace_price, trace_volumes];
-    await Plotly.newPlot("chart", series, layout, config);
+    Plotly.newPlot("chart", series, layout, config);
 };
 
 export default initChart;

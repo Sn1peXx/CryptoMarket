@@ -47,9 +47,11 @@ const CoinChartContainer = (props) => {
     }, []);
 
 
+    const element = document.querySelector("#chart");
+
     return (
         <>
-            {isFetching
+            {isFetching && !(typeof(element) != 'undefined' && element != null)
                 ? <Preloader />
                 : <>
                     <CoinChart

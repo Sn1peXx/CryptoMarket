@@ -1,129 +1,15 @@
-import {useState} from "react";
-import {getDatabase, ref, set, remove, update, onValue} from "firebase/database";
-
-
 const CoinTrade = ({
                        latestPrice,
                        coinsData,
-                       addOrder,
-                       balance,
-                       changeMyBalance,
-                       setNewArrOrder,
-                       addNewDeal
+                       availableToSell,
+                       buyCurrentCoin,
+                       isBuyVisible,
+                       onChangeOpenOrder,
+                       orderValue,
+                       sellCurrentCoin,
+                       updateOrderHandler
+
                    }) => {
-
-    const db = getDatabase();
-    const userId = JSON.parse(localStorage.getItem("user"))[2];
-
-    const [orderValue, setOrderValue] = useState(0);
-    const [isBuyVisible, setBuyVisible] = useState(true);
-
-    let availableToSell = 0;
-
-
-    const starCountRef3 = ref(db, 'NewDeal/' + userId);
-    onValue(starCountRef3, (snapshot) => {
-        try {
-            let res = Object.values(snapshot.val())
-            window.deal = res;
-        } catch (e) {}
-    });
-
-    const onChangeOpenOrder = (status) => {
-        setBuyVisible(status)
-    }
-
-    // ПОлучение данных о покупке
-    const updateOrderHandler = ({target}) => {
-
-        let {value, min, max} = target;
-        value = Math.max(Number(min), Math.min(Number(max), Number(value)));
-
-        setOrderValue(value)
-    }
-
-    // Покупка
-    const buyCurrentCoin = (coin, orderValue) => {
-        const dealDate = new Date().toLocaleDateString();
-
-        const dealVolume = orderValue / latestPrice;
-        const newBalance = balance - orderValue;
-
-        const id = (Math.random() * (10000000 - 1) + 1).toFixed(0);
-
-        changeMyBalance(newBalance);
-        addNewDeal(coin, dealVolume);
-        addOrder(coin, orderValue, dealVolume, dealDate);
-
-        // История
-        set(ref(db, 'OrderHistory/' + userId + `/${id}`), {
-            id,
-            coin,
-            orderValue,
-            dealVolume,
-            dealDate
-        }).catch(() => {
-            alert('Ошибка')
-        })
-
-        // Сделки
-        set(ref(db, 'NewDeal/' + userId + `/${id}`), {
-            id,
-            coin,
-            dealVolume
-        }).catch(() => {
-            alert('Ошибка')
-        })
-
-        update(ref(db, 'Balance/' + userId), {
-            balance: newBalance
-        })
-
-        setOrderValue(0);
-    }
-    //
-    // console.log(window.deal, 'deal')
-    // console.log(window.order, 'order')
-
-    // Продажа
-    const sellCurrentCoin = (coin) => {
-        let newBalance = 0;
-        const newArr = window.deal.filter(item => {
-
-            if (item.coin !== coin) {
-                return item
-            } else {
-                newBalance += window.balance + (item.dealVolume * latestPrice)
-                remove(ref(db, 'NewDeal/' + userId + `/${item.id}`))
-            }
-            calcRestHandler()
-        });
-
-        update(ref(db, 'Balance/' + userId), {
-            balance: newBalance
-        })
-
-        changeMyBalance(newBalance);
-        setNewArrOrder(newArr)
-
-        window.location.reload();
-    }
-
-    console.log(window.deal)
-
-    // Показывает кол-во токенов в наличии
-    // console.log(window.order)
-    const calcRestHandler = () => {
-        window.deal.forEach(item => {
-            if (item.coin === coinsData.id) {
-                availableToSell += item.dealVolume
-            }
-        })
-    }
-
-    try {
-        calcRestHandler()
-    } catch(e) {}
 
 
     return (
@@ -137,7 +23,7 @@ const CoinTrade = ({
             {isBuyVisible ?
                 <div className="order order_buy">
                     <p className="order_available">
-                        Доступно: <strong>{window.balance || null}$</strong>
+                        Доступно: <strong>{window.balance ? window.balance.toFixed(2) : null }$</strong>
                     </p>
                     <div className="order_cost">
                         <p className="order_price_text">Цена</p>

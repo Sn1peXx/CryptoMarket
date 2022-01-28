@@ -9,10 +9,9 @@ import Preloader from "../../Common/Preloader/Preloader";
 import Login from "../Login/Login";
 import SignUp from "../Login/SignUp";
 import HeaderContainer from "../Header/HeaderContainer";
-
+import {DataBase} from "../../API/DataBase";
 
 import './App.css';
-import {getDatabase, onValue, ref, set} from "firebase/database";
 
 
 const App = (props) => {
@@ -28,30 +27,11 @@ const App = (props) => {
     }, [props.initialized]);
 
 
-    // Чтение из базы данных
-        useEffect(() => {
-            const db = getDatabase();
-            const userId = JSON.parse(localStorage.getItem("user"))[2];
-
-            const starCountRef = ref(db, 'OrderHistory/' + userId);
-            onValue(starCountRef, (snapshot) => {
-                try {
-                    let res = Object.values(snapshot.val())
-                    window.order = res;
-                } catch (e) {}
-            });
-
-            const starCountRef2 = ref(db, 'Balance/' + userId);
-            onValue(starCountRef2, (snapshot) => {
-                try {
-                    let res = Object.values(snapshot.val())
-                    console.log(res[0])
-                    window.balance = res[0];
-                } catch (e) {}
-
-            });
-        }, [])
-
+  useEffect(() => {
+      DataBase.getOrderHistory();
+      DataBase.getBalance();
+      DataBase.getNewDeal();
+  }, []);
 
 
     if (!props.initialized) {

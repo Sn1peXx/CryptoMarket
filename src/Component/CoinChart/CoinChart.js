@@ -1,9 +1,7 @@
-import Footer from "../Footer/Footer";
-
-import './CoinPage.css';
 import CoinRec from "./CoinRecomended/CoinRec";
 import CoinTradeContainer from "./CoinTrade/CoinTradeContainer";
 
+import './CoinPage.css';
 
 const CoinChart = ({latestPrice, coinsData, setTimeframe, coins, setCurrentCrypto}) => {
 
@@ -86,7 +84,6 @@ const CoinChart = ({latestPrice, coinsData, setTimeframe, coins, setCurrentCrypt
                     </div>
                 </div>
             </div>
-            <Footer/>
         </>
     );
 }

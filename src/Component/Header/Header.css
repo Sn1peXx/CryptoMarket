@@ -1,6 +1,6 @@
 .header {
     height: 70px;
-    background-color: black;
+    background-color: #296fd9;
 }
 
 .header_navigation {
@@ -19,14 +19,20 @@
 }
 
 .nav_link {
-    color: white;
+    color: rgba(255, 255, 255, 0.75);
     margin-left: 40px;
+    font-weight: 500;
+    font-size: 16px;
     cursor: pointer;
     text-decoration: none;
 }
 
 .nav_link:hover {
-    text-decoration: underline;
+    color: white;
+}
+
+.nav_link:focus {
+    color: white;
 }
 
 
@@ -49,11 +55,19 @@
 .header_exit {
     margin-left: 20px;
     color: white;
+    font-weight: 500;
     font-size: 18px;
-    border: 1px solid #de3030;
-    background-color: #de3030;
+    border: 1px solid white;
+    background-color: #296fd9;
     padding: 10px 17px;
     cursor: pointer;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 5px;
+}
+
+.header_exit:hover {
+    color: black;
+    font-weight: 500;
+    background-color: white;
+    transition: .3s linear;
 }

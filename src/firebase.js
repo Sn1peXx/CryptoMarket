@@ -10,4 +10,4 @@ const firebaseConfig = {
     databaseURL: process.env.REACT_APP_FIREBASE_DATABASEURL
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
