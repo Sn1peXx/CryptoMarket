@@ -1,13 +1,11 @@
 import Orders from "./Orders";
 import {connect} from "react-redux";
-import {setOrder} from "../../Redux/TradeReducer";
-import {useEffect, useState} from "react";
+import {setLoadingState, setOrder} from "../../Redux/TradeReducer";
+import {useEffect} from "react";
 import {DataBase} from "../../API/DataBase";
 
 
 const OrdersContainer = (props) => {
-
-    const [isShow, setShow] = useState(true);
 
     useEffect(() => {
         DataBase.getOrderHistory();
@@ -16,13 +14,13 @@ const OrdersContainer = (props) => {
 
     const showOrder = () => {
         props.setOrder(window.order);
-        setShow(!isShow)
+        props.setLoadingState(false)
     }
 
 
     return (
         <>
-            {isShow
+            {props.isLoadingData
                 ? <button className="order_btn" onClick={() => showOrder()}>Показать</button>
                 :
                 <div className="table_order">
@@ -51,8 +49,9 @@ const OrdersContainer = (props) => {
 
 const mapStateToProps = state => {
     return {
-        orders: state.TradePage.orders
+        orders: state.TradePage.orders,
+        isLoadingData: state.TradePage.isLoadingData
     }
 }
 
-export default connect(mapStateToProps, {setOrder})(OrdersContainer);
+export default connect(mapStateToProps, {setOrder, setLoadingState})(OrdersContainer);
