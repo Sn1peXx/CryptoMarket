@@ -1,0 +1,45 @@
+.wallet {
+    margin-top: 30px;
+}
+
+.wallet_add {
+    margin-left: 20px;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    float: right;
+    border: inherit;
+    background-color: #296fd9;
+    padding: 13px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.wallet_add:hover {
+    transform: scale(1.1);
+    transition: .5s;
+}
+
+.wallet_add:not(:hover) {
+    transition: .5s;
+}
+
+.wallet_main {
+    position: relative;
+    top: 100px;
+}
+
+.wallet_balance {
+    font-size: 31px;
+    width: 300px;
+}
+
+.wallet_top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wallet_title {
+    margin-bottom: 40px;
+}

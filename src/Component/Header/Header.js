@@ -1,10 +1,10 @@
-import logo from "../../resources/Logo_6(white).png";
-
-import './Header.css'
 import {NavLink} from "react-router-dom";
 
-const Header = ({isAuth, removeUserData}) => {
+import logo from "../../resources/Logo_6(white).png";
+import './Header.css'
 
+
+const Header = ({isAuth, removeUserData}) => {
 
     return (
         <header className="header">
@@ -17,7 +17,7 @@ const Header = ({isAuth, removeUserData}) => {
                         <NavLink exact to={'/'} className="nav_link">Популярное</NavLink>
                         <NavLink exact to="/chart" className="nav_link">Рынок</NavLink>
                         <NavLink exact to="/orders" className="nav_link">История ордеров</NavLink>
-                        <div className="nav_link">Кошелек</div>
+                        <NavLink exact to="/wallet" className="nav_link">Кошелек</NavLink>
                     </nav>
                     {isAuth
                         ? <button className="header_exit" onClick={() => removeUserData()}>Выйти</button>

@@ -60,23 +60,24 @@ const CoinTradeContainer = (props) => {
 
     // Продажа
     const sellCurrentCoin = (coin) => {
-        let newBalance = 0;
         const newArr = window.deal.filter(item => {
 
             if (item.coin !== coin) {
                 return item
             } else {
-                newBalance += window.balance + (item.dealVolume * props.latestPrice)
+                DataBase.updateBalance(window.balance + (item.dealVolume * props.latestPrice))
                 DataBase.closeDeal(item.id)
             }
+
             calcRestHandler()
         });
 
-        DataBase.updateBalance(newBalance)
 
         setNewArrOrder(newArr)
 
-        window.location.reload();
+        setBuyVisible(true)
+
+        // window.location.reload();
     }
 
     // Показывает кол-во токенов в наличии

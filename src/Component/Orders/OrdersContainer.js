@@ -17,7 +17,6 @@ const OrdersContainer = (props) => {
         props.setLoadingState(false)
     }
 
-
     return (
         <>
             {props.isLoadingData

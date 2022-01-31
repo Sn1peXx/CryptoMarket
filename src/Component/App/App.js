@@ -13,7 +13,7 @@ import HeaderContainer from "../Header/HeaderContainer";
 import OrdersContainer from "../Orders/OrdersContainer";
 
 import './App.css';
-import {setOrder} from "../../Redux/TradeReducer";
+import WalletContainer from "../Wallet/WalletContainer";
 
 
 const App = (props) => {
@@ -65,6 +65,9 @@ const App = (props) => {
                     />
                     <Route exact path="/orders"
                            render={() => <OrdersContainer />}
+                    />
+                    <Route exact path="/wallet"
+                           render={() => <WalletContainer />}
                     />
                 </Switch>
 
