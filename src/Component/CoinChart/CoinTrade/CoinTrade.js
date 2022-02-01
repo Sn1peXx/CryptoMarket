@@ -23,7 +23,7 @@ const CoinTrade = ({
             {isBuyVisible ?
                 <div className="order order_buy">
                     <p className="order_available">
-                        Доступно: <strong>{window.balance ? window.balance.toFixed(2) : null }$</strong>
+                        Доступно: <strong>{window.balance.toFixed(2)}$</strong>
                     </p>
                     <div className="order_cost">
                         <p className="order_price_text">Цена</p>

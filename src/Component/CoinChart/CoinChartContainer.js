@@ -6,6 +6,7 @@ import CoinChart from "./CoinChart";
 import initChart from "../../services/initChart";
 import Preloader from "../../Common/Preloader/Preloader";
 import {getTenCoins, setCurrentCrypto} from "../../Redux/CoinListReducer";
+import {Redirect} from "react-router-dom";
 
 
 const CoinChartContainer = (props) => {
@@ -48,6 +49,8 @@ const CoinChartContainer = (props) => {
 
 
     const element = document.querySelector("#chart");
+
+    if (!window.store.getState().LoginPage.isAuth) return <Redirect to={"/login"} />
 
     return (
         <>

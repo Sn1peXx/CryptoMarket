@@ -43,3 +43,10 @@
 .wallet_title {
     margin-bottom: 40px;
 }
+
+.wallet-input {
+    float: right;
+    left: 0;
+    margin-top: 25px;
+    font-size: 16px;
+}

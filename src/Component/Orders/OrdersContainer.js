@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {setLoadingState, setOrder} from "../../Redux/TradeReducer";
 import {useEffect} from "react";
 import {DataBase} from "../../API/DataBase";
+import {Redirect} from "react-router-dom";
 
 
 const OrdersContainer = (props) => {
@@ -16,6 +17,8 @@ const OrdersContainer = (props) => {
         props.setOrder(window.order);
         props.setLoadingState(false)
     }
+
+    if (!window.store.getState().LoginPage.isAuth) return <Redirect to={"/login"} />
 
     return (
         <>

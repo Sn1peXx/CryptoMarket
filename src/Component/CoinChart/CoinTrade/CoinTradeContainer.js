@@ -76,8 +76,7 @@ const CoinTradeContainer = (props) => {
         setNewArrOrder(newArr)
 
         setBuyVisible(true)
-
-        // window.location.reload();
+        window.location.reload();
     }
 
     // Показывает кол-во токенов в наличии

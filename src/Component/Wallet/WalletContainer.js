@@ -4,29 +4,28 @@ import {setDeal} from "../../Redux/TradeReducer";
 import {useEffect, useState} from "react";
 import {DataBase} from "../../API/DataBase";
 import Preloader from "../../Common/Preloader/Preloader";
+import {Redirect} from "react-router-dom";
 
 const WalletContainer = (props) => {
+
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
         DataBase.getNewDeal();
     }, [])
 
-    let time = 1000
 
-    setInterval(() => {
+    setTimeout(() => {
         if (typeof window.deal === 'undefined') {
-            if (time === 2000) {
-                props.setDeal(window.deal);
-                setLoading(false);
-            }
-            time += 1000
+            setLoading(false);
         } else {
             props.setDeal(window.deal);
             setLoading(false);
         }
-    }, time)
+    }, 2000)
 
+
+    if (!window.store.getState().LoginPage.isAuth) return <Redirect to={"/login"} />
 
     return (
        <>
