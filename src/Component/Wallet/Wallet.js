@@ -43,7 +43,7 @@ const Wallet = ({activeDeal}) => {
                                 <tr><th>Моента</th><th>Объем</th></tr>
                                 {
                                     activeDeal.map(item => {
-                                        return <tr key={item.id}><td>{item.coin}</td><td>{item.dealVolume.toFixed(4)}</td></tr>
+                                        return <tr key={item.id}><td>{item.coin.toUpperCase()}</td><td>{item.dealVolume.toFixed(4)}</td></tr>
                                     })
                                 }
                                 </tbody>

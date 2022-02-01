@@ -2,7 +2,7 @@ import {getDatabase, onValue, ref, remove, set, update} from "firebase/database"
 
 export const DataBase = {
 
-    getOrderHistory() {
+    getOrderHistory () {
         try {
             const db = getDatabase();
             const userId = JSON.parse(localStorage.getItem("user"))[2];

@@ -11,9 +11,9 @@ import Login from "../Login/Login";
 import SignUp from "../Login/SignUp";
 import HeaderContainer from "../Header/HeaderContainer";
 import OrdersContainer from "../Orders/OrdersContainer";
+import WalletContainer from "../Wallet/WalletContainer";
 
 import './App.css';
-import WalletContainer from "../Wallet/WalletContainer";
 
 
 const App = (props) => {

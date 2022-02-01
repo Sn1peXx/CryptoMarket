@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {addNewDeal, addOrder, setNewArrOrder} from "../../../Redux/TradeReducer";
+import {addNewDeal, addOrder, setBalance, setNewArrOrder} from "../../../Redux/TradeReducer";
 import CoinTrade from "./CoinTrade";
 import {DataBase} from "../../../API/DataBase";
 import {useEffect, useState} from "react";
