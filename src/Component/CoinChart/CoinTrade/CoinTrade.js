@@ -7,8 +7,8 @@ const CoinTrade = ({
                        onChangeOpenOrder,
                        orderValue,
                        sellCurrentCoin,
-                       updateOrderHandler
-
+                       updateOrderHandler,
+                       balance
                    }) => {
 
 
@@ -23,18 +23,18 @@ const CoinTrade = ({
             {isBuyVisible ?
                 <div className="order order_buy">
                     <p className="order_available">
-                        Доступно: <strong>{typeof window.balance === 'undefined' ?  'Что-то пошло не так' : window.balance.toFixed(2) + '$'}</strong>
+                        Доступно: <strong>{balance.toFixed(2) + '$'}</strong>
                     </p>
                     <div className="order_cost">
                         <p className="order_price_text">Цена</p>
                         <p className="order_price_dig"><span
                             style={{paddingRight: "20px", fontWeight: "500"}}>${latestPrice}</span> USDT</p>
                     </div>
-                    <input className="order_input" id="num1" max={window.balance} type="number"
+                    <input className="order_input" id="num1" max={balance} type="number"
                            value={Number(orderValue).toString()}
                            onChange={updateOrderHandler}/><span className="order_dollar">$</span>
                     <br/>
-                    <input className="order_range" type="range" max={window.balance} value={orderValue}
+                    <input className="order_range" type="range" max={balance} value={orderValue}
                            onChange={updateOrderHandler}/>
                     <br/>
                     <button onClick={() => buyCurrentCoin(coinsData.id, orderValue)}

@@ -50,7 +50,9 @@ const CoinChartContainer = (props) => {
 
     const element = document.querySelector("#chart");
 
-    if (!window.store.getState().LoginPage.isAuth) return <Redirect to={"/login"} />
+    if (!JSON.parse(localStorage.getItem("user"))) {
+        return <Redirect to={"/login"} />
+    }
 
     return (
         <>

@@ -1,8 +1,7 @@
 import {connect} from "react-redux";
-import {addNewDeal, addOrder, setBalance, setNewArrOrder} from "../../../Redux/TradeReducer";
+import {addNewDeal, addOrder, setNewBalance, setNewArrOrder} from "../../../Redux/TradeReducer";
 import CoinTrade from "./CoinTrade";
-import {DataBase} from "../../../API/DataBase";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 
 const CoinTradeContainer = (props) => {
@@ -11,10 +10,6 @@ const CoinTradeContainer = (props) => {
     const [isBuyVisible, setBuyVisible] = useState(true);
 
     let availableToSell = 0;
-
-    useEffect(() => {
-        DataBase.getBalance();
-    }, []);
 
     const onChangeOpenOrder = (status) => {
         setBuyVisible(status)
@@ -29,22 +24,11 @@ const CoinTradeContainer = (props) => {
         const dealDate = new Date().toLocaleDateString();
 
         const dealVolume = orderValue / props.latestPrice;
-        const newBalance = window.balance - orderValue;
+        const newBalance = props.balance - orderValue;
 
-        const id = (Math.random() * (10000000 - 1) + 1).toFixed(0);
-
-
-        addNewDeal(coin, dealVolume);
-        addOrder(coin, orderValue, dealVolume, dealDate);
-
-        // История
-        DataBase.setOrderHistory(id, coin,  orderValue, dealVolume, dealDate);
-
-        // Сделки
-        DataBase.setNewDeal(id, coin, dealVolume);
-
-        // Обновление баланса
-        DataBase.updateBalance(newBalance)
+        props.addNewDeal(coin, dealVolume);
+        props.addOrder(coin, orderValue, dealVolume, dealDate);
+        props.setNewBalance(newBalance);
 
         setOrderValue(0);
     }
@@ -60,28 +44,23 @@ const CoinTradeContainer = (props) => {
 
     // Продажа
     const sellCurrentCoin = (coin) => {
-        const newArr = window.deal.filter(item => {
+        const newArr = props.activeDeal.filter(item => {
 
             if (item.coin !== coin) {
                 return item
             } else {
-                DataBase.updateBalance(window.balance + (item.dealVolume * props.latestPrice))
-                DataBase.closeDeal(item.id)
+                props.setNewBalance(props.balance + (item.dealVolume * props.latestPrice));
             }
 
             calcRestHandler()
         });
 
-
-        setNewArrOrder(newArr)
-
-        setBuyVisible(true)
-        window.location.reload();
+        props.setNewArrOrder(newArr)
     }
 
     // Показывает кол-во токенов в наличии
     const calcRestHandler = () => {
-        window.deal.forEach(item => {
+        props.activeDeal.forEach(item => {
             if (item.coin === props.coinsData.id) {
                 availableToSell += item.dealVolume
             }
@@ -91,7 +70,6 @@ const CoinTradeContainer = (props) => {
     try {
         calcRestHandler()
     } catch(e) {}
-
 
 
     return (
@@ -105,6 +83,7 @@ const CoinTradeContainer = (props) => {
             buyCurrentCoin={buyCurrentCoin}
             updateOrderHandler={updateOrderHandler}
             sellCurrentCoin={sellCurrentCoin}
+            balance={props.balance}
         />
     )
 }
@@ -116,4 +95,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {addOrder, addNewDeal, setNewArrOrder})(CoinTradeContainer);
+export default connect(mapStateToProps, {addOrder, addNewDeal, setNewBalance, setNewArrOrder})(CoinTradeContainer);

@@ -4,8 +4,10 @@ const REMOVE_ITEM_FROM_DEAL = 'trade/REMOVE_ITEM_FROM_DEAL';
 const SET_ORDER = 'trade/SET_ORDER'
 const CHANGE_LOADING_STATE = 'trade/CHANGE_LOADING_STATE';
 const SET_DEAL = 'trade/SET_DEAL';
+const CHANGE_BALANCE = 'trade/CHANGE_BALANCE';
 
 const initialState = {
+    balance: 500,
     orders: [], // Все сделки для просмотра
     activeDeal: [], // Открыте сделки для расчета прибыли/убытков
     isLoadingData: true
@@ -53,6 +55,9 @@ const TradeReducer = (state = initialState, action) => {
         case CHANGE_LOADING_STATE:
             return {...state, isLoadingData: action.isLoadingData}
 
+        case CHANGE_BALANCE:
+            return {...state, balance: action.balance}
+
         default:
             return state
     }
@@ -70,6 +75,7 @@ export const setNewArrOrder = (newArr) => ({type: REMOVE_ITEM_FROM_DEAL, newArr}
 export const setOrder = (orders) => ({type:SET_ORDER, orders});
 export const setDeal = activeDeal => ({type: SET_DEAL, activeDeal});
 export const setLoadingState = isLoading => ({type: CHANGE_LOADING_STATE, isLoading});
+export const setNewBalance = balance => ({type: CHANGE_BALANCE, balance})
 
 
 export default TradeReducer;

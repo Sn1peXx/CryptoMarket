@@ -1,35 +1,17 @@
 import Wallet from "./Wallet";
 import {connect} from "react-redux";
-import {setDeal} from "../../Redux/TradeReducer";
-import {useEffect, useState} from "react";
-import {DataBase} from "../../API/DataBase";
-import Preloader from "../../Common/Preloader/Preloader";
+import {setDeal, setNewBalance} from "../../Redux/TradeReducer";
 import {Redirect} from "react-router-dom";
 
 const WalletContainer = (props) => {
 
-    const [isLoading, setLoading] = useState(true);
-
-    useEffect(() => {
-        DataBase.getNewDeal();
-    }, [])
-
-
-    setTimeout(() => {
-        if (typeof window.deal === 'undefined') {
-            setLoading(false);
-        } else {
-            props.setDeal(window.deal);
-            setLoading(false);
-        }
-    }, 2000)
-
-
-    if (!window.store.getState().LoginPage.isAuth) return <Redirect to={"/login"} />
+    if (!JSON.parse(localStorage.getItem("user"))) {
+        return <Redirect to={"/login"} />
+    }
 
     return (
        <>
-           {isLoading ? <Preloader/> : <Wallet activeDeal={props.activeDeal} />}
+           <Wallet activeDeal={props.activeDeal} setNewBalance={props.setNewBalance} balance={props.balance} />
        </>
     )
 }
@@ -37,7 +19,8 @@ const WalletContainer = (props) => {
 const mapStateToProps = state => {
     return {
         activeDeal: state.TradePage.activeDeal,
+        balance: state.TradePage.balance
     }
 }
 
-export default connect(mapStateToProps, {setDeal})(WalletContainer);
+export default connect(mapStateToProps, {setDeal, setNewBalance})(WalletContainer);

@@ -7,21 +7,21 @@ import handleGoogleLogin from "../../Common/Helper/loginWithGoogle";
 
 const Login = (props) => {
 
-    const {push} = useHistory();
+    const history = useHistory();
 
     const handleLogin = (email, pass) => {
-        const auth = getAuth()
+        const auth = getAuth();
         signInWithEmailAndPassword(auth, email, pass)
             .then(({user}) => {
                 props.setUserData(user.email, user.accessToken, user.uid);
-                push('/');
             })
+            .then(() => history.push('/'))
             .catch(console.error)
     }
 
 
     return (
-        <Form title={"Войти"} handleClick={handleLogin} handleGoogleLogin={() => handleGoogleLogin(props.setUserData, push)} />
+        <Form title={"Войти"} handleClick={handleLogin} handleGoogleLogin={() => handleGoogleLogin(props.setUserData, history.push)} />
     )
 }
 

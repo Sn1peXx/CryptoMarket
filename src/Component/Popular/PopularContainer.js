@@ -79,7 +79,7 @@ const PopularContainer = (props) => {
                                     <input className='coin-input' type='text' onChange={handleChange} placeholder='Поиск'/>
                                 </form>
                                 <h3 className='coin-text'>Популярные</h3>
-                                {filteredCoins.length !== 0 ? filteredCoins.map(coin => {
+                                {(filteredCoins.length !== 0 && currentPage <= 3) ? filteredCoins.map(coin => {
                                     return (
                                         <CoinsList
                                             key={coin.id}
@@ -96,7 +96,7 @@ const PopularContainer = (props) => {
                                             {...props}
                                         />
                                     )
-                                }) : <p className='coin_nothing'>Ничего не найдено</p>}
+                                }) : <p className='coin_nothing'>Ничего нет ¯\_(ツ)_/</p>}
                             </div>
                         </div>
                     </div>

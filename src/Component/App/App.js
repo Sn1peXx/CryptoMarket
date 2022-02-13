@@ -2,7 +2,6 @@ import {Route, Switch} from "react-router-dom";
 import {useEffect} from "react";
 import {connect} from "react-redux";
 import {initializeApp} from "../../Redux/AppReducer";
-import {DataBase} from "../../API/DataBase";
 
 import PopularContainer from "../Popular/PopularContainer";
 import CoinPageContainer from "../CoinChart/CoinChartContainer";
@@ -12,6 +11,7 @@ import SignUp from "../Login/SignUp";
 import HeaderContainer from "../Header/HeaderContainer";
 import OrdersContainer from "../Orders/OrdersContainer";
 import WalletContainer from "../Wallet/WalletContainer";
+import {changeIsAuth} from "../../Redux/LoginReducer";
 
 import './App.css';
 
@@ -20,20 +20,13 @@ const App = (props) => {
 
    try {
        if (JSON.parse(localStorage.getItem("user")).length === 3) {
-           window.store.getState().LoginPage.isAuth = true;
+           props.changeIsAuth(true);
        }
    } catch (e) {}
 
     useEffect(() => {
         props.initializeApp();
     }, [props.initialized]);
-
-
-  useEffect(() => {
-      DataBase.getOrderHistory();
-      DataBase.getBalance();
-      DataBase.getNewDeal();
-  }, []);
 
 
 
@@ -81,4 +74,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {initializeApp})(App);
+export default connect(mapStateToProps, {initializeApp, changeIsAuth})(App);
