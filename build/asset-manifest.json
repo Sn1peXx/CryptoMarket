@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/sn1pexx.github.io/cryptomarket/static/css/main.3288723a.css",
+    "main.js": "/sn1pexx.github.io/cryptomarket/static/js/main.8ac5e8b9.js",
+    "static/css/592.f12b54ce.chunk.css": "/sn1pexx.github.io/cryptomarket/static/css/592.f12b54ce.chunk.css",
+    "static/js/592.d5ffc541.chunk.js": "/sn1pexx.github.io/cryptomarket/static/js/592.d5ffc541.chunk.js",
+    "static/js/460.fa397d5f.chunk.js": "/sn1pexx.github.io/cryptomarket/static/js/460.fa397d5f.chunk.js",
+    "static/media/rapidwhite.png": "/sn1pexx.github.io/cryptomarket/static/media/rapidwhite.f726c99652f0330ee8d5.png",
+    "static/media/Spin-0.9s-201px.svg": "/sn1pexx.github.io/cryptomarket/static/media/Spin-0.9s-201px.b74a0aad84f19146e1f6dda150e840dc.svg",
+    "index.html": "/sn1pexx.github.io/cryptomarket/index.html",
+    "main.3288723a.css.map": "/sn1pexx.github.io/cryptomarket/static/css/main.3288723a.css.map",
+    "main.8ac5e8b9.js.map": "/sn1pexx.github.io/cryptomarket/static/js/main.8ac5e8b9.js.map",
+    "592.f12b54ce.chunk.css.map": "/sn1pexx.github.io/cryptomarket/static/css/592.f12b54ce.chunk.css.map",
+    "592.d5ffc541.chunk.js.map": "/sn1pexx.github.io/cryptomarket/static/js/592.d5ffc541.chunk.js.map",
+    "460.fa397d5f.chunk.js.map": "/sn1pexx.github.io/cryptomarket/static/js/460.fa397d5f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3288723a.css",
+    "static/js/main.8ac5e8b9.js"
+  ]
+}
