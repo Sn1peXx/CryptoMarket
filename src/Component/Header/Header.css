@@ -1,12 +1,12 @@
 .header {
     height: 70px;
-    background-color: #296fd9;
+    background-color: #252525;
 }
 
 .header_navigation {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
 }
 
 .header_logo {
@@ -16,6 +16,7 @@
 
 .nav {
     display: flex;
+    margin: 0 auto;
 }
 
 .nav_link {

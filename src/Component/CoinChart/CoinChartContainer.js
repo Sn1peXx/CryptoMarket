@@ -50,10 +50,6 @@ const CoinChartContainer = (props) => {
 
     const element = document.querySelector("#chart");
 
-    if (!JSON.parse(localStorage.getItem("user"))) {
-        return <Redirect to={"/login"} />
-    }
-
     return (
         <>
             {isFetching && !(typeof(element) != 'undefined' && element != null)

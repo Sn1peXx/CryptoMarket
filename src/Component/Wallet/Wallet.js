@@ -5,7 +5,7 @@ const Wallet = ({activeDeal, balance, setNewBalance}) => {
 
     const [input, setInput] = useState(false);
     const [value, setValue] = useState(0);
-
+    
     const handleChangeValue = (e) => {
         if (e.target.value <= 10000) {
             setValue(e.target.value);

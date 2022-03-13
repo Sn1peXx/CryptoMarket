@@ -19,13 +19,13 @@ const Header = ({isAuth, removeUserData}) => {
                         <NavLink exact to="/orders" className="nav_link">История ордеров</NavLink>
                         <NavLink exact to="/wallet" className="nav_link">Кошелек</NavLink>
                     </nav>
-                    {isAuth
-                        ? <button className="header_exit" onClick={() => removeUserData()}>Выйти</button>
-                        : <div className="header_button">
-                            <NavLink to={'/login'} className="header_login">Войти</NavLink>
-                            <NavLink to={'/register'} className="header_registration">Создать аккаунт</NavLink>
-                          </div>
-                    }
+                    {/*{isAuth*/}
+                    {/*    ? <button className="header_exit" onClick={() => removeUserData()}>Выйти</button>*/}
+                    {/*    : <div className="header_button">*/}
+                    {/*        <NavLink to={'/login'} className="header_login">Войти</NavLink>*/}
+                    {/*        <NavLink to={'/register'} className="header_registration">Создать аккаунт</NavLink>*/}
+                    {/*      </div>*/}
+                    {/*}*/}
                 </div>
             </div>
         </header>

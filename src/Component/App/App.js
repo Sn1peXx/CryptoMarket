@@ -6,8 +6,6 @@ import {initializeApp} from "../../Redux/AppReducer";
 
 import PopularContainer from "../Popular/PopularContainer";
 import Preloader from "../../Common/Preloader/Preloader";
-import Login from "../Login/Login";
-import SignUp from "../Login/SignUp";
 import HeaderContainer from "../Header/HeaderContainer";
 import OrdersContainer from "../Orders/OrdersContainer";
 import WalletContainer from "../Wallet/WalletContainer";
@@ -21,7 +19,7 @@ const CoinPageContainer = React.lazy(() => import('../CoinChart/CoinChartContain
 const App = (props) => {
 
    try {
-       if (JSON.parse(localStorage.getItem("user")).length === 3) {
+       if ("awe".length === 3) {
            props.changeIsAuth(true);
        }
    } catch (e) {}
@@ -49,23 +47,17 @@ const App = (props) => {
                     <Route exact path="/"
                            render={() => <PopularContainer />}
                     />
-                    <Suspense fallback={<Preloader />}>
-                        <Route exact path="/chart"
-                               render={() => <CoinPageContainer /> }
-                        />
-                    </Suspense>
-                    <Route exact path="/login"
-                           render={() => <Login />}
-                    />
-                    <Route exact path="/register"
-                           render={() => <SignUp />}
-                    />
                     <Route exact path="/orders"
                            render={() => <OrdersContainer />}
                     />
                     <Route exact path="/wallet"
                            render={() => <WalletContainer />}
                     />
+                    <Suspense fallback={<Preloader />}>
+                        <Route exact path="/chart"
+                               render={() => <CoinPageContainer /> }
+                        />
+                    </Suspense>
                 </Switch>
 
         </>

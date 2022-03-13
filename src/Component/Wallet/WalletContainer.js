@@ -1,13 +1,8 @@
 import Wallet from "./Wallet";
 import {connect} from "react-redux";
 import {setDeal, setNewBalance} from "../../Redux/TradeReducer";
-import {Redirect} from "react-router-dom";
 
 const WalletContainer = (props) => {
-
-    if (!JSON.parse(localStorage.getItem("user"))) {
-        return <Redirect to={"/login"} />
-    }
 
     return (
        <>
@@ -16,10 +11,10 @@ const WalletContainer = (props) => {
     )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        activeDeal: state.TradePage.activeDeal,
-        balance: state.TradePage.balance
+        balance: state.TradePage.balance,
+        activeDeal: state.TradePage.activeDeal
     }
 }
 

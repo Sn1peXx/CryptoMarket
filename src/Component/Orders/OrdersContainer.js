@@ -5,10 +5,6 @@ import {Redirect} from "react-router-dom";
 
 const OrdersContainer = (props) => {
 
-    if (!JSON.parse(localStorage.getItem("user"))) {
-        return <Redirect to={"/login"} />
-    }
-
     return (
         <>
             <div className="table_order">
